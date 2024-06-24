@@ -50,7 +50,7 @@ export const DATA = {
   work: [
     {
       company: "Accenture",
-      href: "https://atomic.finance",
+      href: "https://www.accenture.com/",
       badges: [],
       location: "Remote",
       title: "Bitcoin Protocol Engineer",
@@ -63,7 +63,7 @@ export const DATA = {
     {
       company: "Infosys",
       badges: [],
-      href: "https://shopify.com",
+      href: "https://www.infosys.com",
       location: "Remote",
       title: "Software Engineer",
       logoUrl: "/infosys_logo.jpeg",
@@ -74,7 +74,7 @@ export const DATA = {
     },
     {
       company: "Colan Infotech",
-      href: "https://nvidia.com/",
+      href: "https://colaninfotech.com/",
       badges: [],
       location: "Santa Clara, CA",
       title: "Software Engineer",
@@ -86,7 +86,7 @@ export const DATA = {
     },
     {
       company: "Divergent Development Lab",
-      href: "https://splunk.com",
+      href: "http://www.d-devlabs.com/",
       badges: [],
       location: "San Jose, CA",
       title: "Software Engineer",
@@ -98,7 +98,7 @@ export const DATA = {
     },
     {
       company: "Grepsale",
-      href: "https://li.me/",
+      href: "",
       badges: [],
       location: "San Francisco, CA",
       title: "Software Engineer",
