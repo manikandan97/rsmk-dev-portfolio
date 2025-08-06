@@ -117,6 +117,35 @@ export const DATA = {
   ],
   projects: [
     {
+      title: "Stream-Bridge",
+      href: "https://share.rsmk.dev",
+      dates: "August 2025",
+      active: true,
+      description:
+        "A peer-to-peer file transfer application built using WebSocket and Node.js. Enables real-time file sharing without third-party hosting, deployed on DigitalOcean with a clean React frontend.",
+      technologies: [
+        "Node.js",
+        "WebSocket",
+        "React",
+        "DigitalOcean",
+        "JavaScript",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://share.rsmk.dev",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Source",
+          href: "https://github.com/manikandan97/stream-bridge",
+          icon: <Icons.github className="size-3" />,
+        },
+      ],
+      image: "",
+      video: "",
+    },
+    {
       title: "Prompt Pilot",
       href: "#",
       dates: "June 2025 - Present",

@@ -1,0 +1,82 @@
+---
+title: "Building Stream-Bridge: My Experience with Vibe Coding and AI Tools"
+publishedAt: "2025-08-06"
+date: "2025-08-06"
+description: "How I built a peer-to-peer file transfer app using Claude Code, WebSocket, and DigitalOcean."
+---
+
+# 🚀 Building Stream-Bridge: My Experience with Vibe Coding and AI Tools
+
+Hello everyone! 👋
+
+I recently completed a small project called **Stream-Bridge** — a peer-to-peer file transfer application built using **WebSocket**. What makes this project special is that I developed almost the entire thing using **vibe coding** with **Claude Code**.
+
+In this post, I’ll walk you through how I built it, the challenges I faced, and what I learned along the way.
+
+## 💡 Why I Built It
+
+I’ve always been curious about how P2P file transfer works, and I wanted to build something lightweight that didn’t require third-party file hosting. I also wanted to explore how much I could push the limits of AI-assisted development using tools like Claude Code, Gemini CLI, and ChatGPT.
+
+I tested **Gemini CLI**, but I found that **Claude Code Pro** offered better handling of large contexts and a smoother development experience.
+
+---
+
+## 📋 The Process: From Idea to Deployment
+
+Before writing any code, I broke the entire process down into three key stages:
+
+1. **Planning**
+2. **Development**
+3. **Deployment**
+
+### 1. 🧠 Planning
+
+Even though Stream-Bridge is a small project, planning was **crucial**. When using vibe coding with AI tools like Claude, clear direction matters a lot.
+
+I used **ChatGPT** to brainstorm ideas, decide the tech stack (Node.js + WebSocket), and design a basic architecture.
+
+Once the plan was ready, I wrote a detailed `README.md` and — more importantly — a `Claude.md` file. This file is used by Claude Code to retain context about your app, which makes future prompts more effective. I highly recommend it if you're using Claude!
+
+### 2. 💻 Development
+
+With the planning done, I started coding with Claude. I gave clear, structured prompts, and the tool generated about **97% of the application**. It also helped fix bugs, improve structure, and made smart decisions without needing constant back-and-forth.
+
+Features:
+
+- Simple frontend for selecting and sending files
+- Backend Node.js WebSocket server to handle the P2P transfer
+
+The entire app was ready in **2 days**.
+
+### 3. 🚀 Deployment
+
+Originally, I wanted to deploy the app on **Vercel** — it’s free and super easy. But I ran into a big issue: **Vercel doesn’t support WebSocket**, since it uses serverless architecture.
+
+Claude didn’t mention this while generating the code, and by default, created a REST API-based version. This taught me an important lesson:
+
+> 🧠 Be very specific with your prompts when using AI tools.
+
+To solve this, I looked into alternatives using ChatGPT. Some external WebSocket services were suggested, but they didn’t feel right.
+
+So I set up a **Node.js WebSocket server** on a **DigitalOcean droplet** (similar to AWS EC2). This gave me full control and worked perfectly.
+
+After updating the setup, I shared everything with Claude again, and it adjusted the app accordingly.
+
+✅ **Live demo**: [https://share.rsmk.dev](https://share.rsmk.dev)  
+📂 **GitHub Repo**: [https://github.com/manikandan97/stream-bridge](https://github.com/manikandan97/stream-bridge)
+
+---
+
+## 🤖 Final Thoughts: Will AI Replace Us?
+
+**No, AI won’t replace developers.** But it will **boost our productivity** and let us focus more on ideas and less on boilerplate.
+
+There’s still a lot of human work involved — setting up servers, debugging, deploying, testing edge cases, etc. AI is a tool, not a replacement.
+
+> Keep learning, keep building. The real risk is only if we stop learning.
+
+Thanks for reading! 🙌 Feel free to check out the code and share your thoughts.
+
+---
+
+#AI #WebSocket #NodeJS #ClaudeCode #ChatGPT #DigitalOcean #BuildInPublic #streambridge #OpenSource #DeveloperJourney
