@@ -111,7 +111,7 @@ export const DATA = {
       href: "#",
       degree: "B.E. Electrical and Electronics Engineering",
       logoUrl: "/buildspace.jpg",
-      start: "2012",
+      start: "2014",
       end: "2018",
     },
   ],
