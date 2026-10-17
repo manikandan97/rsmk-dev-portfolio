@@ -142,3 +142,15 @@ code[data-line-numbers-max-digits="2"] > [data-line]::before {
 code[data-line-numbers-max-digits="3"] > [data-line]::before {
   width: 3rem;
 }
+/* chat widget (public/chat-widget.js): kept outside @layer, since layered rules lose to the widget's own styles */
+:root {
+  --cw-accent: hsl(var(--primary));
+  --cw-accent-fg: hsl(var(--primary-foreground));
+  --cw-bg: hsl(var(--background));
+  --cw-fg: hsl(var(--foreground));
+}
+/* on phones the bottom dock spans the width: lift the chat above it */
+@media (max-width: 640px) {
+  .cw .cw-btn { bottom: 84px; }
+  .cw .cw-box { bottom: 150px; height: min(480px, calc(100vh - 180px)); }
+}

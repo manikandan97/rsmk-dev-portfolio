@@ -5,6 +5,7 @@ import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const fontSans = FontSans({
@@ -67,6 +68,11 @@ export default function RootLayout({
             <Navbar />
           </TooltipProvider>
         </ThemeProvider>
+        <Script
+          src="/chat-widget.js"
+          data-endpoint="https://4hetojxcsv3xivtcxng3acnf740wefcp.lambda-url.ap-south-1.on.aws/"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
