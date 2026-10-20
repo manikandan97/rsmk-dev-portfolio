@@ -1,4 +1,3 @@
-import { HackathonCard } from "@/components/hackathon-card";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ProjectCard } from "@/components/project-card";
@@ -119,6 +118,28 @@ export default function Page() {
           </div>
         </div>
       </section>
+      <section id="certifications">
+        <div className="flex min-h-0 flex-col gap-y-3">
+          <BlurFade delay={BLUR_FADE_DELAY * 10}>
+            <h2 className="text-xl font-bold">Certifications</h2>
+          </BlurFade>
+          <div className="flex flex-wrap justify-center gap-3 sm:justify-start">
+            {DATA.certifications.map((id, i) => (
+              <BlurFade key={id} delay={BLUR_FADE_DELAY * 10 + i * 0.05}>
+                {/* ponytail: Credly's iframe directly, not embed.js, which only scans the DOM once and misses client-side navigations */}
+                <iframe
+                  src={`https://www.credly.com/embedded_badge/${id}`}
+                  title="Credly certification badge"
+                  width={150}
+                  height={270}
+                  loading="lazy"
+                  className="rounded-lg"
+                />
+              </BlurFade>
+            ))}
+          </div>
+        </div>
+      </section>
       <section id="projects">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
@@ -131,9 +152,8 @@ export default function Page() {
                   Check out my latest work
                 </h2>
                 <p className="text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  I&apos;ve worked on a variety of projects, from simple
-                  websites to complex web applications. Here are a few of my
-                  favorites.
+                  Side projects I&apos;ve shipped, with write-ups on how they
+                  were built.
                 </p>
               </div>
             </div>
@@ -171,15 +191,21 @@ export default function Page() {
                 Get in Touch
               </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Want to chat? Just shoot me a dm{" "}
+                Open to backend and full-stack roles. Email me at{" "}
                 <Link
-                  href={DATA.contact.social.X.url}
+                  href={`mailto:${DATA.contact.email}`}
                   className="text-blue-500 hover:underline"
                 >
-                  with a direct question on twitter
+                  {DATA.contact.email}
                 </Link>{" "}
-                and I&apos;ll respond whenever I can. I will ignore all
-                soliciting.
+                or reach out on{" "}
+                <Link
+                  href={DATA.contact.social.LinkedIn.url}
+                  className="text-blue-500 hover:underline"
+                >
+                  LinkedIn
+                </Link>
+                .
               </p>
             </div>
           </BlurFade>
