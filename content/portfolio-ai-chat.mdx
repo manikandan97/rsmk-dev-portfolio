@@ -1,0 +1,62 @@
+---
+title: "Case Study: Adding an AI Chat to My Portfolio"
+publishedAt: "2026-10-17"
+summary: "How I added a one-script RAG chat widget to this site, backed by an AWS Lambda Function URL."
+---
+
+## The problem
+
+A recruiter skimming a portfolio has specific questions: _Have you used Kafka? How long with Spring Security? Open to relocation?_ A static page makes them hunt for the answer, or leave. I wanted visitors to be able to just ask.
+
+## Constraints
+
+- **No new frontend dependencies.** The site is a small Next.js app; I didn't want a chat SDK for one text box.
+- **Portable.** The same widget should drop into any site with one `<script>` tag.
+- **Safe by default.** Answers come from an LLM, so they must never be rendered as HTML.
+- **Cheap to run.** Traffic is low and bursty, so pay-per-request compute fits better than an always-on server.
+
+## Architecture
+
+```text
+Browser (chat-widget.js)  ──POST {question}──▶  AWS Lambda Function URL
+                          ◀──{answer}─────────  retrieve resume context → LLM
+```
+
+### Frontend: one script, ~75 lines
+
+`public/chat-widget.js` is plain JavaScript. It injects its own styles and markup, reads the endpoint from a `data-endpoint` attribute, and talks to the backend with a single `fetch`:
+
+```js
+const r = await fetch(endpoint, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ question }),
+});
+```
+
+In Next.js it is loaded once from the root layout with `next/script` and `strategy="afterInteractive"`, so it never blocks the first paint.
+
+Key decisions:
+
+- **`textContent`, never `innerHTML`**, for bot replies, so a model answer can't inject markup into the page.
+- **Theming via CSS variables** (`--cw-accent`, `--cw-bg`, `--cw-fg`, `--cw-accent-fg`). The site maps these to its own theme tokens, so the widget follows light/dark mode automatically.
+- **Input capped at 300 characters** to keep requests (and LLM cost) bounded.
+- **Accessible basics:** `aria-expanded` on the toggle, `aria-live="polite"` on the message log, labelled input.
+- On phones the bubble is lifted above the site's bottom dock so the two don't overlap.
+
+### Backend: Lambda Function URL
+
+<!-- TODO(Manikandan): fill in — how resume content is chunked/embedded, where vectors live, which model answers, and how you keep it from answering off-topic questions. -->
+
+The backend is a single AWS Lambda exposed through a Function URL (no API Gateway). It retrieves the most relevant parts of my resume and project notes for the question and passes them to an LLM, so answers stay grounded in real experience.
+
+## Results
+
+<!-- TODO(Manikandan): add real numbers once you have them — questions asked per week, typical latency, monthly cost. -->
+
+Try it yourself: click the 💬 button in the bottom-right corner of any page.
+
+## What I'd do next
+
+- Stream tokens back instead of waiting for the full answer.
+- Log unanswered questions to find gaps in the resume content.
